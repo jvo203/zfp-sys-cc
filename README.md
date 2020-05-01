@@ -1,5 +1,5 @@
 # zfp-sys-cc
-Raw Rust bindings to ZFP (https://github.com/LLNL/zfp).
+Raw Rust bindings to ZFP (https://github.com/LLNL/zfp) with Windows 10 support..
 
 A cross-platform "cc"-based crate with Windows 10 support, as opposed to the "cmake"-based "zfp-sys" crate that only worked in Linux and macOS.
 
