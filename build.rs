@@ -63,9 +63,7 @@ fn main() {
         .files(src_files)
         .files(cuda_files)
         .compile("zfp");
-
-    /*println!("cargo:rustc-link-search=native={:?}/lib", zfp);
-    println!("cargo:rustc-link-search=native={:?}/lib64", zfp);*/
+    
     println!("cargo:rustc-link-lib=zfp");
 
     // The bindgen::Builder is the main entry point
