@@ -6,21 +6,18 @@ use std::path::PathBuf;
 use std::path::Path;
 use std::{fs, io};
 
-// one possible implementation of walking a directory only visiting files
 fn scan_dir(dir: &Path, files: &mut Vec<PathBuf>) -> io::Result<()> {
     if dir.is_dir() {
         for entry in fs::read_dir(dir)? {
             let entry = entry?;
             let path = entry.path();
-            if path.is_dir() {
-                //scan_dir(&path, files)?;
-            } else {
+            if path.is_file() {
                 let file: PathBuf = entry.path();
 
                 match file.to_str() {
                     Some(filename) => {
-                        // only append files ending with ".c"
-                        if filename.ends_with(".c") || filename.ends_with(".cu"){
+                        // only append files ending with ".c" or ".cu"
+                        if filename.ends_with(".c") || filename.ends_with(".cu") {
                             files.push(file);
                         }
                     }
@@ -43,7 +40,10 @@ fn main() {
     let _ = scan_dir(Path::new(&format!("{}/src", src_dir)), &mut src_files);
 
     #[cfg(feature = "cuda")]
-    let _ = scan_dir(Path::new(&format!("{}/src/cuda_zfp", src_dir)), &mut cuda_files);
+    let _ = scan_dir(
+        Path::new(&format!("{}/src/cuda_zfp", src_dir)),
+        &mut cuda_files,
+    );
 
     //build zfp with cc
     #[cfg(not(feature = "cuda"))]
