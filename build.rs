@@ -30,7 +30,7 @@ fn scan_dir(dir: &Path, files: &mut Vec<PathBuf>) -> io::Result<()> {
 }
 
 fn main() {
-    let src_dir = String::from("zfp-0.5.5");
+    let src_dir = String::from("zfp-1.0.0");
 
     let mut src_files: Vec<PathBuf> = Vec::new();
 
@@ -63,7 +63,7 @@ fn main() {
         .files(src_files)
         .files(cuda_files)
         .compile("zfp");
-    
+
     println!("cargo:rustc-link-lib=zfp");
 
     // The bindgen::Builder is the main entry point
