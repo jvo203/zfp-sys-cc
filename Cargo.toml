@@ -2,7 +2,7 @@
 name = "zfp-sys-cc"
 version = "0.2.0"
 authors = ["jvo203 <chris.zapart@nao.ac.jp>"]
-edition = "2021"
+edition = "2024"
 description = "Raw Rust bindings to ZFP (https://github.com/LLNL/zfp) with Microsoft Windows 10 support."
 repository = "https://github.com/jvo203/zfp-sys-cc"
 readme = "README.md"
